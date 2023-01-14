@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Timer</title>
+<style type="text/css">
+
+    #shape{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        display: none;
+        position: relative;
+       
+
+
+    }
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    p{
+        font-weight: bold;
+    }
+
+    h1{
+        align-content: center;
+    }
+
+
+
+</style>
+
+
+</head>
+<body>
+<h1>Test your Reactions</h1>
+
+<p>Click on the boxes and Circles as quickly as you can!</p>
+
+    <p>Your time: <span id="timetaken"></span> </p>
+    <div id="shape"></div>
+
+    <script type="text/javascript">
+
+        var start = new Date(). getTime();
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+          }
+
+        function makeShapeApper (){
+
+            var top = Math.random() * 400;
+            document.getElementById("shape"). style.top = top +"px"
+
+            var left = Math.random() * 400;
+            document.getElementById("shape"). style.left = left +"px"
+
+            var width = (Math.random() * 400) + 100;
+            document.getElementById("shape"). style.width = width +"px"
+            document.getElementById("shape"). style.height = width +"px"
+
+            document.getElementById("shape"). style.backgroundColor = getRandomColor() ;
+
+            if (Math.random() > 0.5){
+                document.getElementById("shape"). style.borderRadius = "50%"
+
+            } else {
+                document.getElementById("shape"). style.borderRadius = "0%"
+            }
+
+            document.getElementById("shape"). style.display = "block"
+
+            start = new Date(). getTime();
+            
+        }
+
+        function apperAfterDelay (){
+             setTimeout(makeShapeApper, Math.random() * 2000);
+        }
+         
+        apperAfterDelay()
+      
+        document.getElementById("shape"). onclick = function(){
+            document.getElementById("shape"). style.display = "none"
+
+            var end = new Date(). getTime();
+
+            var timeTaken = (end - start) / 1000;
+            var averange = timeTaken / 100;
+            document.getElementById("timetaken"). innerHTML = timeTaken + "s" + 
+            ".  Averange time  " + averange + " s";
+            
+            apperAfterDelay()
+        }
+
+       
+
+    </script>
+</body>
+</html>
