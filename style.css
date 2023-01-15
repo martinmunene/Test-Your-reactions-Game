@@ -1,0 +1,12 @@
+#shape{
+    width: 200px;
+    height: 200px;
+    background-color: rebeccapurple;
+    display: none;
+    position: relative;
+    shape-margin: 3cm;
+}
+body{
+font-family: sans-serif;
+
+}
